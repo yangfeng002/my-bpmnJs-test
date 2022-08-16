@@ -1,8 +1,9 @@
-import axios from './index'
+import axios from "./index"
+import { APIS } from "@/config/index"
 
 const getWorkflows = (data) => {
   return axios.request({
-    key: 'getWorkflows',
+    url: APIS.getWorkflows(),
     method: 'GET',
     params: data
   })
@@ -10,7 +11,7 @@ const getWorkflows = (data) => {
 
 const findById = (data) => {
   return axios.request({
-    key: 'findById',
+    url: APIS.findById(),
     method: 'GET',
     params: data
   })
@@ -18,7 +19,7 @@ const findById = (data) => {
 
 const modelList = (data) => {
   return axios.request({
-    key: 'modelList',
+    url: APIS.modelList(),
     method: 'GET',
     params: data
   })
@@ -26,7 +27,7 @@ const modelList = (data) => {
 
 const modelLists = (data) => {
   return axios.request({
-    key: 'modelLists',
+    url: APIS.modelLists(),
     method: 'GET',
     params: data
   })
@@ -34,7 +35,7 @@ const modelLists = (data) => {
 
 const queryDepartmentListByTenantCode = (data) => {
   return axios.request({
-    key: 'queryDepartmentListByTenantCode',
+    url: APIS.queryDepartmentListByTenantCode(),
     method: 'GET',
     params: data
   })
@@ -42,7 +43,7 @@ const queryDepartmentListByTenantCode = (data) => {
 // 角色列表
 const queryRoleListByTenantCode = (data) => {
   return axios.request({
-    key: 'queryRoleListByTenantCode',
+    url: APIS.queryRoleListByTenantCode(),
     method: 'GET',
     params: data
   })
@@ -50,7 +51,7 @@ const queryRoleListByTenantCode = (data) => {
 
 const findFlowElementsByProcessInstanceId = (data) => {
   return axios.request({
-    key: 'findFlowElementsByProcessInstanceId',
+    url: APIS.findFlowElementsByProcessInstanceId(),
     method: 'GET',
     params: data
   })
@@ -58,7 +59,7 @@ const findFlowElementsByProcessInstanceId = (data) => {
 
 const rejectAnyNode = (data) => {
   return axios.request({
-    key: 'rejectAnyNode',
+    url: APIS.rejectAnyNode(),
     method: 'GET',
     params: data
   })
@@ -66,7 +67,7 @@ const rejectAnyNode = (data) => {
 
 const processInstanceList = (data) => {
   return axios.request({
-    key: 'processInstanceList',
+    url: APIS.processInstanceList(),
     method: 'GET',
     params: data
   })
@@ -74,7 +75,7 @@ const processInstanceList = (data) => {
 
 const exportByKey = (data) => {
   return axios.request({
-    key: 'exportByKey',
+    url: APIS.exportByKey(),
     method: 'GET',
     params: data
   })
@@ -82,15 +83,15 @@ const exportByKey = (data) => {
 
 const saveWorkflows = (data) => {
   return axios.request({
-    key: 'saveWorkflows',
+    url: APIS.saveWorkflows(),
     method: 'POST',
     data
   })
 }
-
+// 用户数据接口
 const queryUserByTenantCode = (data) => {
   return axios.request({
-    key: 'queryUserByTenantCode',
+    url: APIS.queryUserByTenantCode(),
     method: 'POST',
     data
   })

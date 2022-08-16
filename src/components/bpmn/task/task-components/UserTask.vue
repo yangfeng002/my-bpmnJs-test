@@ -66,7 +66,9 @@
 </template>
 
 <script>
+
 import { queryUserByTenantCode, queryRoleListByTenantCode } from '@/api/workflow'
+
 export default {
   name: 'UserTask',
   props: {
@@ -103,10 +105,6 @@ export default {
   },
   beforeDestroy() {
     this.bpmnElement = null
-  },
-  created() {
-    // this.getUserList()
-    // this.getCandidateList()
   },
   methods: {
     getUserList() {

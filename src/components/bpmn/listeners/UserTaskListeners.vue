@@ -338,15 +338,7 @@
 <script>
 
 import Vue from 'vue'
-import {Button, Form, FormItem, Select, Option, Input, Table} from 'element-ui'
-Vue.use(Form)
-Vue.use(FormItem)
-Vue.use(Select)
-Vue.use(Option)
-Vue.use(Button)
-Vue.use(Input)
-Vue.use(Table)
-
+import { Button, Form, FormItem, Select, Option, Input, Table } from 'element-ui'
 
 import {
   createListenerObject,
@@ -359,8 +351,15 @@ import {
   listenerType,
   fieldType
 } from './utilSelf'
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Table)
 
- export default {
+export default {
   name: 'UserTaskListeners',
   props: {
     id: String,
@@ -401,12 +400,11 @@ import {
         this.bpmnElement.businessObject?.extensionElements?.values?.filter(
           (ex) => ex.$type === `${this.prefix}:TaskListener`
         ) ?? []
-        if(this.bpmnElementListeners && this.bpmnElementListeners.length > 0) {
-          this.elementListenersList = this.bpmnElementListeners.map((listener) =>
-            initListenerType(listener)
-          )
-        }
-      
+      if (this.bpmnElementListeners && this.bpmnElementListeners.length > 0) {
+        this.elementListenersList = this.bpmnElementListeners.map((listener) =>
+          initListenerType(listener)
+        )
+      }
     },
     openListenerForm(listener, index) {
       if (listener) {
@@ -451,7 +449,7 @@ import {
     },
     // 保存监听器
     async saveListenerConfig() {
-      const validateStatus = await this.$refs['listenerFormRef'].validate()
+      const validateStatus = this.$refs['listenerFormRef'].validate()
       if (!validateStatus) return // 验证不通过直接返回
       const listenerObject = createListenerObject(
         this.listenerForm,
@@ -498,26 +496,28 @@ import {
       })
     },
     // 保存监听器注入字段
-    async saveListenerFiled() {
-      const validateStatus = await this.$refs['listenerFieldFormRef'].validate()
-      if (!validateStatus) return // 验证不通过直接返回
-      if (this.editingListenerFieldIndex === -1) {
-        this.fieldsListOfListener.push(this.listenerFieldForm)
-        this.listenerForm.fields.push(this.listenerFieldForm)
-      } else {
-        this.fieldsListOfListener.splice(
-          this.editingListenerFieldIndex,
-          1,
-          this.listenerFieldForm
-        )
-        this.listenerForm.fields.splice(
-          this.editingListenerFieldIndex,
-          1,
-          this.listenerFieldForm
-        )
-      }
-      this.listenerFieldFormModelVisible = false
-      this.$nextTick(() => (this.listenerFieldForm = {}))
+    saveListenerFiled() {
+      this.$refs['listenerFieldFormRef'].validate(valid => {
+        if (valid) {
+          if (this.editingListenerFieldIndex === -1) {
+            this.fieldsListOfListener.push(this.listenerFieldForm)
+            this.listenerForm.fields.push(this.listenerFieldForm)
+          } else {
+            this.fieldsListOfListener.splice(
+              this.editingListenerFieldIndex,
+              1,
+              this.listenerFieldForm
+            )
+            this.listenerForm.fields.splice(
+              this.editingListenerFieldIndex,
+              1,
+              this.listenerFieldForm
+            )
+          }
+          this.listenerFieldFormModelVisible = false
+          this.$nextTick(() => (this.listenerFieldForm = {}))
+        }
+      })
     },
     // 移除监听器字段
     removeListenerField(field, index) {

@@ -46,10 +46,24 @@ import SignalAndMassage from "./signal-message/SignalAndMessage"
 import ElementListeners from "./listeners/ElementListeners"
 import UserTaskListeners from "./listeners/UserTaskListeners"
 
+/* 统一引入第三方组件 */
 import Vue from 'vue'
-import { Collapse, CollapseItem } from "element-ui"
+import { Button, Form, FormItem, Select, Option, Input, Table, Collapse, CollapseItem } from 'element-ui'
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Table)
 Vue.use(Collapse)
 Vue.use(CollapseItem)
+Vue.use(Button)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Select)
+Vue.use(Option)
 
 export default {
   name: "MyBpmnPanel",

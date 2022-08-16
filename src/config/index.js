@@ -1,9 +1,11 @@
-let ENV = 'dev'
+/* 接口配置 */
+
+let ENV = 'development'
 const API = 'API'
 
 const HOSTS = {
   API: {
-    local: '',
+    local: 'https://rest-dev.jfh.com',
     development: 'https://rest-dev.jfh.com',
     test: 'https://rest-test.jfh.com',
     rc: 'https://rest-test.jfh.com',
@@ -27,7 +29,7 @@ const _g = (host, path) => {
  *
  * 使用示例：
  * APIS.test()      // 获取该接口当前环境的url
- * APIS.test('dev') // 获取接口指定环境的url
+ * APIS.test('development') // 获取接口指定环境的url
  *isv/claimBuByCompId
  * @type {{test: (function(*=))}}
  */
@@ -42,7 +44,6 @@ const APIS = {
   modelList: _g(API, '/prt-opcomponent/definition/findProcessDefinition'),
   // 用户列表
   queryUserByTenantCode: _g(API, '/prt-opcomponent/usersApi/queryUserByTenantCode'),
-
   // 候选组
   queryDepartmentListByTenantCode: _g(API, '/prt-opcomponent/tenantDepartmentApi/queryDepartmentListByTenantCode'),
   // 角色列表

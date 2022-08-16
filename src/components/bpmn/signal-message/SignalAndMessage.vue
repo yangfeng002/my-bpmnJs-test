@@ -94,6 +94,14 @@ type="primary"
   </div>
 </template>
 <script>
+import Vue from 'vue'
+import { Table, TableColumn, Button, Dialog } from 'element-ui'
+
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Button)
+Vue.use(Dialog)
+
 export default {
   name: 'SignalAndMassage',
   data() {

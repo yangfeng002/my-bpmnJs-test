@@ -38,8 +38,12 @@
 </template>
 <script>
 import Vue from 'vue'
-import { Switch } from 'element-ui'
+import { Form, FormItem, Switch, Input, Message } from 'element-ui'
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
 Vue.use(Switch)
+Vue.prototype.$message = Message
 
 export default {
   name: 'ElementBaseInfo',

@@ -9,6 +9,9 @@
 </template>
 
 <script>
+/* 环境设置 */
+import { setEnv } from "./config"
+
 import FlowDetail from "./components/FlowDetail.vue"
 
 /* 样式文件 */
@@ -26,6 +29,11 @@ export default {
     FlowDetail
   },
   props: {
+    // 环境设置
+    env: {
+      type: String,
+      default: "local"
+    },
     isEdit: {
       // 是否为编辑
       type: Boolean,
@@ -40,6 +48,14 @@ export default {
       // 编辑功能下传递 示例：130100
       type: String,
       default: ""
+    }
+  },
+  watch: {
+    env: {
+      immediate: true,
+      handler() {
+        setEnv(this.env)
+      }
     }
   }
 }

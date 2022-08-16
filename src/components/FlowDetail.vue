@@ -35,7 +35,7 @@ import CustomContentPadProvider from "./bpmnJs/content-pad"
 import CustomPaletteProvider from "./bpmnJs/palette"
 
 /* 接口文件 */
-import { getWorkflows, findById } from "../api/workflow.js"
+import { getWorkflows, findById } from "@/api/workflow.js"
 
 Vue.use(Table)
 

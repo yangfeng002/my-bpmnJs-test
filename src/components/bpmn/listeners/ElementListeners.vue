@@ -284,19 +284,7 @@
 <script>
 /* 引入element ui 组件 */
 import Vue from 'vue'
-import {Table, Button, Input,Form, FormItem,  Dialog, Select, Option, Divider, Drawer, TableColumn}from 'element-ui' 
-Vue.use(Table)
-Vue.use(Button)
-Vue.use(Input)
-Vue.use(Form)
-Vue.use(FormItem)
-Vue.use(Dialog)
-Vue.use(Select)
-Vue.use(Option)
-Vue.use(Divider)
-Vue.use(Drawer)
-Vue.use(TableColumn)
-
+import { Table, Button, Input, Form, FormItem, Dialog, Select, Option, Divider, Drawer, TableColumn, MessageBox } from 'element-ui'
 
 import {
   createListenerObject,
@@ -308,6 +296,19 @@ import {
   listenerType,
   fieldType
 } from './utilSelf'
+Vue.use(Table)
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Dialog)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Divider)
+Vue.use(Drawer)
+Vue.use(TableColumn)
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$confirm = MessageBox.confirm
 
 export default {
   name: 'ElementListeners',
@@ -391,26 +392,28 @@ export default {
       })
     },
     // 保存监听器注入字段
-    async saveListenerFiled() {
-      const validateStatus = await this.$refs['listenerFieldFormRef'].validate()
-      if (!validateStatus) return // 验证不通过直接返回
-      if (this.editingListenerFieldIndex === -1) {
-        this.fieldsListOfListener.push(this.listenerFieldForm)
-        this.listenerForm.fields.push(this.listenerFieldForm)
-      } else {
-        this.fieldsListOfListener.splice(
-          this.editingListenerFieldIndex,
-          1,
-          this.listenerFieldForm
-        )
-        this.listenerForm.fields.splice(
-          this.editingListenerFieldIndex,
-          1,
-          this.listenerFieldForm
-        )
-      }
-      this.listenerFieldFormModelVisible = false
-      this.$nextTick(() => (this.listenerFieldForm = {}))
+    saveListenerFiled() {
+      this.$refs["listenerFieldFormRef"].validate(valid => {
+        if (valid) {
+          if (this.editingListenerFieldIndex === -1) {
+            this.fieldsListOfListener.push(this.listenerFieldForm)
+            this.listenerForm.fields.push(this.listenerFieldForm)
+          } else {
+            this.fieldsListOfListener.splice(
+              this.editingListenerFieldIndex,
+              1,
+              this.listenerFieldForm
+            )
+            this.listenerForm.fields.splice(
+              this.editingListenerFieldIndex,
+              1,
+              this.listenerFieldForm
+            )
+          }
+          this.listenerFieldFormModelVisible = false
+          this.$nextTick(() => (this.listenerFieldForm = {}))
+        }
+      })
     },
     // 移除监听器字段
     removeListenerField(field, index) {
@@ -441,41 +444,43 @@ export default {
         .catch(() => console.info('操作取消'))
     },
     // 保存监听器配置
-    async saveListenerConfig() {
-      const validateStatus = await this.$refs['listenerFormRef'].validate()
-      if (!validateStatus) return // 验证不通过直接返回
-      const listenerObject = createListenerObject(
-        this.listenerForm,
-        false,
-        this.prefix
-      )
-      if (this.editingListenerIndex === -1) {
-        this.bpmnElementListeners.push(listenerObject)
-        this.elementListenersList.push(this.listenerForm)
-      } else {
-        this.bpmnElementListeners.splice(
-          this.editingListenerIndex,
-          1,
-          listenerObject
-        )
-        this.elementListenersList.splice(
-          this.editingListenerIndex,
-          1,
-          this.listenerForm
-        )
-      }
-      // 保存其他配置
-      this.otherExtensionList =
+    saveListenerConfig() {
+      this.$refs['listenerFormRef'].validate(valid => {
+        if (valid) {
+          const listenerObject = createListenerObject(
+            this.listenerForm,
+            false,
+            this.prefix
+          )
+          if (this.editingListenerIndex === -1) {
+            this.bpmnElementListeners.push(listenerObject)
+            this.elementListenersList.push(this.listenerForm)
+          } else {
+            this.bpmnElementListeners.splice(
+              this.editingListenerIndex,
+              1,
+              listenerObject
+            )
+            this.elementListenersList.splice(
+              this.editingListenerIndex,
+              1,
+              this.listenerForm
+            )
+          }
+          // 保存其他配置
+          this.otherExtensionList =
         this.bpmnElement.businessObject?.extensionElements?.values?.filter(
           (ex) => ex.$type !== `${this.prefix}:ExecutionListener`
         ) ?? []
-      updateElementExtensions(
-        this.bpmnElement,
-        this.otherExtensionList.concat(this.bpmnElementListeners)
-      )
-      // 4. 隐藏侧边栏
-      this.listenerFormModelVisible = false
-      this.listenerForm = {}
+          updateElementExtensions(
+            this.bpmnElement,
+            this.otherExtensionList.concat(this.bpmnElementListeners)
+          )
+          // 4. 隐藏侧边栏
+          this.listenerFormModelVisible = false
+          this.listenerForm = {}
+        }
+      })
     }
   }
 }
