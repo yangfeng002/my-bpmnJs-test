@@ -1,6 +1,4 @@
 import Axios from 'axios'
-import { Message } from 'element-ui'
-
 class HttpRequest {
   constructor () {
     this.instance = Axios.create({
@@ -19,18 +17,9 @@ class HttpRequest {
    * autor: caoguangyao
    * */
   interceptors() {
-    const that = this
     this.instance.interceptors.response.use(res => {
       const { data } = res
-      if (process.env.NODE_ENV !== 'production') {
-        that.exportLog(res)
-      }
-      if (res.data.code === '00010105') {
-        Message.error('没有权限访问该页面')
-      }
-      if (res.config.showOrigin) {
-        return res
-      }
+
       return data
     }, err => {
       if (err.response && err.response.status) {
@@ -48,7 +37,7 @@ class HttpRequest {
     if (options.url) { // 以真实url 访问
       options.method = options.method || 'POST'
     } else {
-      options.method = (options.url?.indexOf('json') !== -1) ? 'get' : (options.method || 'post')
+      options.method = (options.url.indexOf('json') !== -1) ? 'get' : (options.method || 'post')
     }
     if (options.contentType) {
       options.headers = {

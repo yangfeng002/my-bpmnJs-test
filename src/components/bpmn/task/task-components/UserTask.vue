@@ -108,20 +108,19 @@ export default {
   },
   methods: {
     getUserList() {
-      console.log(queryUserByTenantCode())
-      // queryUserByTenantCode().then((res) => {
-      //   if (res.code === '0') {
-      //     this.userList = res.data || []
-      //     this.userTaskForm.assignee = Number(this.userTaskForm.assignee)
-      //     // 处理数据
-      //     if (this.userTaskForm.candidateUsers && this.userTaskForm.candidateUsers.length > 0) {
-      //       this.userTaskForm.candidateUsers = this.userTaskForm.candidateUsers.map(item => Number(item))
-      //     }
-      //   }
-      // })
-      //   .catch((err) => {
-      //     console.log(err.msg)
-      //   })
+      queryUserByTenantCode().then((res) => {
+        if (res.code === '0') {
+          this.userList = res.data || []
+          this.userTaskForm.assignee = Number(this.userTaskForm.assignee)
+          // 处理数据
+          if (this.userTaskForm.candidateUsers && this.userTaskForm.candidateUsers.length > 0) {
+            this.userTaskForm.candidateUsers = this.userTaskForm.candidateUsers.map(item => Number(item))
+          }
+        }
+      })
+        .catch((err) => {
+          console.log(err.msg)
+        })
     },
     getCandidateList() {
       queryRoleListByTenantCode().then((res) => {

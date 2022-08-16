@@ -90,7 +90,6 @@ const saveWorkflows = (data) => {
 }
 // 用户数据接口
 const queryUserByTenantCode = (data) => {
-  debugger
   return axios.request({
     url: APIS.queryUserByTenantCode(),
     method: 'POST',
