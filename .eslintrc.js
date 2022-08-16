@@ -180,7 +180,11 @@ module.exports = {
         "max": 1,
         "allowFirstLine": false
       }
+    }],
+    "indent": ["error", 2, {
+      "ignoredNodes": ["TemplateLiteral"]
     }]
+  
   },
   parserOptions: {
     parser: 'babel-eslint'

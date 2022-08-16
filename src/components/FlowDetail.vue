@@ -12,13 +12,13 @@
       @init-finished="initModeler"
     ></my-bpmn-canvas>
     <!-- 面板 -->
-    <!-- <my-bpmn-panel
+    <my-bpmn-panel
       :class="{ displayNone: disable }"
       :bpmn-modeler="modeler"
       :prefix="controlForm.prefix"
       class="process-panel"
     >
-    </my-bpmn-panel> -->
+    </my-bpmn-panel>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ import Vue from 'vue'
 import { Table } from 'element-ui'
 
 import myBpmnCanvas from "./bpmn/myBpmnCanvas.vue"
-// import myBpmnPanel from "./bpmn/myBpmnPanel.vue"
+import myBpmnPanel from "./bpmn/myBpmnPanel.vue"
 
 // 自定义元素选中时的弹出菜单（修改 默认任务 为 用户任务）
 import CustomContentPadProvider from "./bpmnJs/content-pad"
@@ -36,11 +36,12 @@ import CustomPaletteProvider from "./bpmnJs/palette"
 
 /* 接口文件 */
 import { getWorkflows, findById } from "../api/workflow.js"
+
 Vue.use(Table)
 
 export default {
   name: "MyBpmn",
-  components: { myBpmnCanvas },
+  components: { myBpmnCanvas, myBpmnPanel },
   data() {
     return {
       modeler: null,

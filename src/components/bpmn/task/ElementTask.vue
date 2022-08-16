@@ -29,6 +29,12 @@ import UserTask from './task-components/UserTask'
 import ScriptTask from './task-components/ScriptTask'
 import ReceiveTask from './task-components/ReceiveTask'
 
+import Vue from 'vue'
+import { Form, FormItem, Checkbox } from 'element-ui'
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Checkbox)
+
 export default {
   name: 'ElementTaskConfig',
   components: { UserTask, ScriptTask, ReceiveTask },

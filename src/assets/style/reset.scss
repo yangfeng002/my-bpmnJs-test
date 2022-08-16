@@ -1,0 +1,59 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+	margin:0;padding:0;
+	font-family: Microsoft Yahei,Helvetica Neue,Helvetica,Arial,Tahoma,sans-serif;
+	font-size:14px;color:#555555;white-space:normal;
+	font-weight: 500;
+	box-sizing:border-box;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
+}
+html,body,#app { width: 100%; height: 100%; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display:block; }
+html,body,.block{-webkit-overflow-scrolling : touch;}
+table{
+	border-collapse:collapse;border-spacing:0
+}
+audio,canvas,video {
+	display: inline-block;*display: inline;*zoom: 1;
+}
+fieldset,img{border:0}
+address,caption,cite,code,dfn,em,th,var,b{
+	font-style:normal;font-weight:normal
+}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+q:before,q:after{content:""}
+abbr,acronym{border:0;font-variant:normal}
+sup{vertical-align:top}
+sub{vertical-align:text-bottom}
+button,input,textarea,select{
+	border:none;background:none;
+	font-family:inherit;font-size:inherit;font-weight:inherit;
+}
+input,textarea,select{*font-size:100%}
+select{
+	border:none;
+	appearance:none;
+    -moz-appearance:none;
+	-webkit-appearance:none;
+	background: transparent;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+input,textarea{
+    background:none;outline:none;border:0px;
+}
+a{
+	color: #242424;text-decoration: none; cursor: pointer;
+	&:hover{text-decoration: none;}
+}
+button,input, select, img { vertical-align: middle;}
+button,input, textarea, select {
+	border-radius: 0;
+	appearance: none;
+}
+
+a{
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+-webkit-user-select: none;
+-moz-user-focus: none;
+	-moz-user-select: none;
+}

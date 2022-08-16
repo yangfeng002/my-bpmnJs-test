@@ -1,8 +1,8 @@
-// module.exports = {
-//   devServer: {
-//     open: true,
-//     https: true,
-//     disableHostCheck: true,
-//     host: 'local.jfh.com'
-//   }
-// }
+module.exports = {
+  devServer: {
+    open: true,
+    https: true,
+    disableHostCheck: true,
+    host: 'local.jfh.com'
+  }
+}

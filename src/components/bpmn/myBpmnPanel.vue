@@ -46,7 +46,7 @@ import SignalAndMassage from "./signal-message/SignalAndMessage"
 import ElementListeners from "./listeners/ElementListeners"
 import UserTaskListeners from "./listeners/UserTaskListeners"
 
-import Vue from 'Vue'
+import Vue from 'vue'
 import { Collapse, CollapseItem } from "element-ui"
 Vue.use(Collapse)
 Vue.use(CollapseItem)

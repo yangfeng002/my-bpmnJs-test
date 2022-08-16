@@ -1,0 +1,131 @@
+@import "reset";
+@import "variables";
+@import "process-designer";
+@import "process-panel";
+
+html, body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 14px;
+  min-width: $page-min-width;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+// 根据avue的需要重写滚动条的默认值
+::-webkit-scrollbar,
+::-webkit-scrollbar-track-piece{
+  background-color:transparent
+}
+::-webkit-scrollbar{
+  width:7px;
+  height:7px;
+}
+::-webkit-scrollbar-thumb{
+  border-radius:5px;
+  background-color:rgba(144,146,152,.3)
+}
+
+.clearfix {
+  &::after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+//vue router transition css
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .2s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.el-drawer__wrapper{
+  .el-table td,
+  .el-table th {
+    color: #333;
+  }
+  .el-drawer__header {
+    padding: 16px 16px 8px 16px;
+    margin: 0;
+    line-height: 24px;
+    font-size: 18px;
+    color: #303133;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  div[class^="el-drawer"]:focus,
+  span:focus {
+    outline: none;
+  }
+  .el-drawer__body {
+    box-sizing: border-box;
+    padding: 16px;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .el-dialog {
+    margin-top: 50vh !important;
+    transform: translateY(-50%);
+    overflow: hidden;
+  }
+  .el-dialog__wrapper {
+    overflow: hidden;
+    max-height: 100vh;
+  }
+  .el-dialog__header {
+    padding: 16px 16px 8px 16px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .el-dialog__body {
+    padding: 16px;
+    max-height: 80vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .el-dialog__footer {
+    padding: 16px;
+    box-sizing: border-box;
+    border-top: 1px solid #e8e8e8;
+  }
+  .el-dialog__close {
+    font-weight: 600;
+  }
+  .el-select {
+    width: 100%;
+  }
+  .el-divider:not(.el-divider--horizontal) {
+    margin: 0 8px;
+  }
+  .el-divider.el-divider--horizontal {
+    margin: 16px 0;
+  }
+}

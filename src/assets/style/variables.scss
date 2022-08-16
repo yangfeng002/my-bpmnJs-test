@@ -1,0 +1,37 @@
+$--color-primary: #19bc9c;
+$--color-success: #4eba19;
+$--color-warning: #e6a23c;
+$--color-danger: #f56c6c;
+$--color-info: #909399;
+
+$--color-primary-text: #303133;
+$--color-regular-text: #606266;
+$--color-secondary-text: #909399;
+$--color-placeholder: #c0c4cc;
+
+$--color-border-base: #dcdfe6;
+$--color-border-light: #e4e7ed;
+$--color-border-lighter: #ebeef5;
+
+$--color-background-base: #fff;
+$--color-background-section: #f0f2f5;
+$--color-background-cover: rgba(0, 0, 0, .5);
+
+$--font-size-small: 12px;
+$--font-size-base: 14px;
+$--font-size-middle: 16px;
+$--font-size-large: 18px;
+$--font-size-xlarge: 24px;
+
+$--box-shadow-base: 0 1px 4px $--color-border-base;
+$--border-radius: 4px;
+
+/* 项目中自定义的一些通用变量 */
+$page-min-width: 1280px;
+
+$white:		#ffff;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

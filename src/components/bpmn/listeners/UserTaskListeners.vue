@@ -338,13 +338,15 @@
 <script>
 
 import Vue from 'vue'
-import {Button, Form, FormItem, Select, Option, Input} from 'element-ui'
+import {Button, Form, FormItem, Select, Option, Input, Table} from 'element-ui'
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Button)
 Vue.use(Input)
+Vue.use(Table)
+
 
 import {
   createListenerObject,

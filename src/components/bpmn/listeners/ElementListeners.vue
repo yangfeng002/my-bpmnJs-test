@@ -282,6 +282,22 @@
   </div>
 </template>
 <script>
+/* 引入element ui 组件 */
+import Vue from 'vue'
+import {Table, Button, Input,Form, FormItem,  Dialog, Select, Option, Divider, Drawer, TableColumn}from 'element-ui' 
+Vue.use(Table)
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Dialog)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Divider)
+Vue.use(Drawer)
+Vue.use(TableColumn)
+
+
 import {
   createListenerObject,
   updateElementExtensions

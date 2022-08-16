@@ -4,17 +4,17 @@ export function createListenerObject(options, isTask, prefix) {
   listenerObj.event = options.event
   isTask && (listenerObj.id = options.id) // 任务监听器特有的 id 字段
   switch (options.listenerType) {
-    case "scriptListener":
-      listenerObj.script = createScriptObject(options, prefix)
-      break
-    case "expressionListener":
-      listenerObj.expression = options.expression
-      break
-    case "delegateExpressionListener":
-      listenerObj.delegateExpression = options.delegateExpression
-      break
-    default:
-      listenerObj.class = options.class
+  case "scriptListener":
+    listenerObj.script = createScriptObject(options, prefix)
+    break
+  case "expressionListener":
+    listenerObj.expression = options.expression
+    break
+  case "delegateExpressionListener":
+    listenerObj.delegateExpression = options.delegateExpression
+    break
+  default:
+    listenerObj.class = options.class
   }
   // 注入字段
   if (options.fields) {
