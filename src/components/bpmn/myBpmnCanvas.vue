@@ -64,13 +64,13 @@ import activitiModdleDescriptor from "../bpmnJs/descriptor/activitiDescriptor.js
 import flowableModdleDescriptor from "../bpmnJs/descriptor/flowableDescriptor.json"
 
 /* 引入element ui 模块 */
-import { ButtonGroup, Button } from 'element-ui'
+import { ButtonGroup, Button, Message } from 'element-ui'
 
 import { saveWorkflows } from '../../api/workflow'
 
 Vue.use(ButtonGroup)
-
 Vue.use(Button)
+Vue.prototype.$message = Message
 
 export default {
   name: "MyBpmnCanvas",

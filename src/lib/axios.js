@@ -48,7 +48,6 @@ class HttpRequest {
     if (options.url) { // 以真实url 访问
       options.method = options.method || 'POST'
     } else {
-      // options.method = 'POST'
       options.method = (options.url?.indexOf('json') !== -1) ? 'get' : (options.method || 'post')
     }
     if (options.contentType) {
