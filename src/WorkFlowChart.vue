@@ -1,5 +1,6 @@
 <template>
-  <!-- 新建或者编辑流程图 -->
+<div class="jfh__workflow-chart-box">
+   <!-- 新建或者编辑流程图 -->
   <div class="myBpmn">
     <!-- 画布 -->
     <my-bpmn-canvas
@@ -20,33 +21,39 @@
     >
     </my-bpmn-panel>
   </div>
+</div>
 </template>
 
 <script>
 import Vue from 'vue'
 import { Table } from 'element-ui'
 
-import myBpmnCanvas from "./bpmn/myBpmnCanvas.vue"
-import myBpmnPanel from "./bpmn/myBpmnPanel.vue"
+/* 流程图相关引入 */
+import myBpmnCanvas from "./components/bpmn/myBpmnCanvas.vue"
+import myBpmnPanel from "./components/bpmn/myBpmnPanel.vue"
 
 // 自定义元素选中时的弹出菜单（修改 默认任务 为 用户任务）
-import CustomContentPadProvider from "./bpmnJs/content-pad"
+import CustomContentPadProvider from "./components/bpmnJs/content-pad"
 // 自定义左侧菜单（修改 默认任务 为 用户任务）
-import CustomPaletteProvider from "./bpmnJs/palette"
+import CustomPaletteProvider from "./components/bpmnJs/palette"
 
 /* 接口文件 */
 import { getWorkflows, findById } from "@/api/workflow.js"
+// 消息订阅引入
+import PubSub from 'pubsub-js'
+// 混入
+import { mixins } from '@/mixins/mixins.js'
 
 Vue.use(Table)
 
 export default {
   name: "MyBpmn",
   components: { myBpmnCanvas, myBpmnPanel },
+  mixins: [mixins],
   data() {
     return {
       modeler: null,
       xmlString: "",
-      disable: false,
       controlForm: {
         processId: "",
         processName: "",
@@ -59,43 +66,37 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.query.processDefinitionId) {
-      this.getWorkflow(1)
-    }
-    if (this.$route.query.key) {
-      this.getWorkflow(2)
-    }
-    if (this.$route.query.disable) {
-      this.disable = true
-    }
+    // 订阅消息
+    PubSub.subscribe('saveWorkFlows', (msg, value) => {
+      this.$emit('saveFlowChart', value)
+    })
   },
   methods: {
     // 获取工作流
     getWorkflow(res) {
+      // 查看流程图
       if (res === 1) {
         getWorkflows({
-          processDefinitionId: this.$route.query.processDefinitionId
+          processDefinitionId: this.processDefinitionId
         })
           .then((res) => {
             if (res.code === "0") {
               this.xmlString = res.data || ""
               this.$refs.processDesigner.createNewDiagram(this.xmlString)
-              // console.log(this.xmlString)
             }
-          })
-          .catch(() => {
+          }).catch(() => {
             this.$message.error("操作失败")
           })
       } else {
-        findById({ processDefinitionKey: this.$route.query.key })
+        // 编辑流程图
+        findById({ processDefinitionKey: this.flowKey })
           .then((res) => {
             if (res.code === "0") {
               this.xmlString = res.data || ""
               this.$refs.processDesigner.createNewDiagram(this.xmlString)
               // console.log(this.xmlString)
             }
-          })
-          .catch(() => {
+          }).catch(() => {
             this.$message.error("操作失败")
           })
       }
@@ -128,7 +129,9 @@ export default {
 }
 </script>
 <style lang="scss">
-.myBpmn {
+.jfh__workflow-chart-box{
+  height: 100%;
+  .myBpmn {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -199,10 +202,11 @@ export default {
   .el-divider.el-divider--horizontal {
     margin: 16px 0;
   }
-}
-.el-dialog {
-  .el-select {
-    width: 100%;
+  }
+  .el-dialog {
+    .el-select {
+      width: 100%;
+    }
   }
 }
 </style>

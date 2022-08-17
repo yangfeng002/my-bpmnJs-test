@@ -44,6 +44,8 @@
 <script>
 import Vue from 'vue'
 
+import PubSub from 'pubsub-js' // 消息订阅引入
+
 // 引入bpmn模块
 import BpmnModeler from "bpmn-js/lib/Modeler"
 
@@ -66,7 +68,7 @@ import flowableModdleDescriptor from "../bpmnJs/descriptor/flowableDescriptor.js
 /* 引入element ui 模块 */
 import { ButtonGroup, Button, Message } from 'element-ui'
 
-import { saveWorkflows } from '../../api/workflow'
+// import { saveWorkflows } from '../../api/workflow'
 
 Vue.use(ButtonGroup)
 Vue.use(Button)
@@ -80,6 +82,7 @@ export default {
       type: Boolean,
       default: false
     },
+    flowId: String, // 流程id
     processId: String,
     processName: String,
     // translations: Object, // 自定义的翻译文件
@@ -268,20 +271,10 @@ export default {
       const deployXml = await this.bpmnModeler.saveXML()
       console.log(deployXml.xml)
       const obj = { deployXml: deployXml.xml }
-      if (this.$route.query.id) {
-        obj.modelId = this.$route.query.id
+      if (this.flowId) {
+        obj.modelId = this.flowId
       }
-      saveWorkflows(obj).then((res) => {
-        if (res.code === '0') {
-          this.$message.success('保存成功')
-          window.location.href = '/front-workflow-mp/modelList.html'
-        } else {
-          this.$message.error(res.data.exception)
-        }
-      })
-        .catch((err) => {
-          this.$message.error('保存失败!' + err.data.exception)
-        })
+      PubSub.publish('saveWorkFlows', obj) // 发布消息
     },
     // 下载流程图到本地（xml，bpmn，svg）
     async downloadProcess(type, name) {
