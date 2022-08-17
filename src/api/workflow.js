@@ -1,5 +1,5 @@
 import axios from "./index"
-import { APIS } from "@/config/index"
+import { APIS } from "../config/index"
 
 const getWorkflows = (data) => {
   return axios.request({

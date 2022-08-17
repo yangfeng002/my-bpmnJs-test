@@ -38,11 +38,11 @@ import CustomContentPadProvider from "./components/bpmnJs/content-pad"
 import CustomPaletteProvider from "./components/bpmnJs/palette"
 
 /* 接口文件 */
-import { getWorkflows, findById } from "@/api/workflow.js"
+import { getWorkflows, findById } from "./api/workflow.js"
 // 消息订阅引入
 import PubSub from 'pubsub-js'
 // 混入
-import { mixins } from '@/mixins/mixins.js'
+import { mixins } from './mixins/mixins.js'
 
 Vue.use(Table)
 

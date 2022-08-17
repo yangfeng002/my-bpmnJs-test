@@ -67,7 +67,7 @@
 
 <script>
 
-import { queryUserByTenantCode, queryRoleListByTenantCode } from '@/api/workflow'
+import { queryUserByTenantCode, queryRoleListByTenantCode } from '../../../../api/workflow'
 
 export default {
   name: 'UserTask',

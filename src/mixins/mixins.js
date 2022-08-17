@@ -1,6 +1,6 @@
 // 引入流程图样式
 /* 样式文件 */
-import "@/assets/style/index.scss"
+import "../assets/style/index.scss"
 
 // 流程图样式
 import "bpmn-js/dist/assets/diagram-js.css" // 左边工具栏以及编辑节点的样式
