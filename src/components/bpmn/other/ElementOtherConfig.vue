@@ -50,6 +50,8 @@ export default {
   beforeDestroy() {
     this.bpmnElement = null
   },
+  mounted() {
+  },
   methods: {
     updateDocumentation() {
       ;(this.bpmnElement && this.bpmnElement.id === this.id) ||

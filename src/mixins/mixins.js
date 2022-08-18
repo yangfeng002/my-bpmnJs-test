@@ -56,11 +56,11 @@ export const mixins = {
   },
   mounted() {
     // 查看流程图
-    if (this.processDefinitionId) {
+    if (this.processDefinitionId && this.handleType === 'show') {
       this.getWorkflow(1)
     }
     // 编辑流程图
-    if (this.flowKey) {
+    if (this.flowKey && this.handleType === 'edit') {
       this.getWorkflow(2)
     }
   }
