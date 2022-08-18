@@ -94,3 +94,18 @@ export default {
 | :--------- | :--- | :----------- |
 | saveFlowsCallback |  保存流程图回调函数  | function(params) |
 ### 
+
+注意： 组件中依赖第三方bpmn，所以需要安装相关的包，安装方法：
+  ```
+  步骤：
+   1. package.json中添加
+   
+      "bpmn-js": "^8.8.2",
+      "bpmn-js-properties-panel": "^0.46.0",
+      "bpmn-js-token-simulation": "^0.21.1",
+      "pubsub-js": "^1.9.4",
+      "element-ui": "^2.15.3"
+
+    2. 执行npm install 命令
+
+  ```

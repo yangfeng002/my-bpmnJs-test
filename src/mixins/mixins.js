@@ -10,7 +10,7 @@ import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css"
 import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
 
 // 环境变量设置
-import { setEnv } from "@/config"
+import { setEnv } from "../config"
 
 export const mixins = {
   props: {

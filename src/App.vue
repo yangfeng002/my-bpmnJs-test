@@ -3,11 +3,18 @@
     <!-- <router-view></router-view> -->
 
     <!-- 新建流程图 -->
-    <work-flow-chart v-show="handleType === 'create'" env="development" @saveFlowChart="saveFlowChart"></work-flow-chart>
+    <work-flow-chart
+        v-show="handleType === 'create'"
+        :handleType="handleType"
+        env="development"
+        @saveFlowChart="saveFlowChart"
+        >
+    </work-flow-chart>
 
     <!-- 编辑流程图 -->
     <work-flow-chart
         v-show="handleType === 'edit'"
+        :handleType="handleType"
         env="development"
         :flowId="flowId"
         :flowKey="flowKey"
@@ -18,6 +25,7 @@
     <!-- 查看流程图 -->
     <work-flow-chart
       v-show="handleType === 'show'"
+      :handleType="handleType"
       :processDefinitionId="processDefinitionId"
       env="development"
       :disable="disable"

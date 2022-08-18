@@ -296,6 +296,7 @@ import {
   listenerType,
   fieldType
 } from './utilSelf'
+
 Vue.use(Table)
 Vue.use(Button)
 Vue.use(Input)

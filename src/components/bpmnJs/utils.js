@@ -50,6 +50,7 @@ export function createScriptObject(options, prefix) {
 
 // 更新元素扩展属性
 export function updateElementExtensions(element, extensionList) {
+  debugger
   const extensions = window.bpmnInstances.moddle.create("bpmn:ExtensionElements", {
     values: extensionList
   })
