@@ -8,7 +8,7 @@ class HttpRequest {
     this.instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
     // 请求发起时拦截器
     this.interceptors()
-    // 挂载原 axios get post 方法 (请留意这里的写法 为何未出this异常??)
+    // 挂载原 axios get post 方法 (请留意这里的写法 为何未出this异常)
     // this.get = this.instance.get
     this.post = this.instance.post
   }

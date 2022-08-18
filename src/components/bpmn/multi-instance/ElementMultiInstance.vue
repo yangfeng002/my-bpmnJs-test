@@ -146,9 +146,9 @@ export default {
         ...this.defaultLoopInstanceForm,
         ...businessObject.loopCharacteristics,
         completionCondition:
-          businessObject.loopCharacteristics?.completionCondition?.body ?? '',
+          businessObject.loopCharacteristics?.completionCondition?.body || '',
         loopCardinality:
-          businessObject.loopCharacteristics?.loopCardinality?.body ?? ''
+          businessObject.loopCharacteristics?.loopCardinality?.body || ''
       }
       // 保留当前元素 businessObject 上的 loopCharacteristics 实例
       this.multiLoopInstance =

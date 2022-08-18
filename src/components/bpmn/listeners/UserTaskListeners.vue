@@ -399,7 +399,7 @@ export default {
       this.bpmnElementListeners =
         this.bpmnElement.businessObject?.extensionElements?.values?.filter(
           (ex) => ex.$type === `${this.prefix}:TaskListener`
-        ) ?? []
+        ) || []
       if (this.bpmnElementListeners && this.bpmnElementListeners.length > 0) {
         this.elementListenersList = this.bpmnElementListeners.map((listener) =>
           initListenerType(listener)
@@ -475,7 +475,7 @@ export default {
       this.otherExtensionList =
         this.bpmnElement.businessObject?.extensionElements?.values?.filter(
           (ex) => ex.$type !== `${this.prefix}:TaskListener`
-        ) ?? []
+        ) || []
       updateElementExtensions(
         this.bpmnElement,
         this.otherExtensionList.concat(this.bpmnElementListeners)

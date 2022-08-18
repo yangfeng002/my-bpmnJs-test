@@ -350,7 +350,7 @@ export default {
       this.bpmnElementListeners =
         this.bpmnElement?.businessObject?.extensionElements?.values?.filter(
           (ex) => ex.$type === `${this.prefix}:ExecutionListener`
-        ) ?? []
+        ) || []
       this.elementListenersList = this.bpmnElementListeners.map((listener) =>
         initListenerType(listener)
       )
@@ -472,7 +472,7 @@ export default {
           this.otherExtensionList =
         this.bpmnElement.businessObject?.extensionElements?.values?.filter(
           (ex) => ex.$type !== `${this.prefix}:ExecutionListener`
-        ) ?? []
+        ) || []
           updateElementExtensions(
             this.bpmnElement,
             this.otherExtensionList.concat(this.bpmnElementListeners)

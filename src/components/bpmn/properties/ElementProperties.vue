@@ -117,7 +117,7 @@ export default {
             }
             return ex.$type === `${this.prefix}:Properties`
           }
-        ) ?? []
+        ) || []
 
       // 保存所有的 扩展属性字段
       this.bpmnElementPropertyList = this.bpmnElementProperties.reduce(
@@ -126,7 +126,7 @@ export default {
       )
       // 复制 显示
       this.elementPropertyList = JSON.parse(
-        JSON.stringify(this.bpmnElementPropertyList ?? [])
+        JSON.stringify(this.bpmnElementPropertyList || [])
       )
     },
     openAttributesForm(attr, index) {
