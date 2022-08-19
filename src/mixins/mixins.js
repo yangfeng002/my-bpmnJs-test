@@ -52,16 +52,20 @@ export const mixins = {
       handler() {
         setEnv(this.env)
       }
+    },
+    handleType: {
+      immediate: true,
+      handler(val) {
+        if (val === 'show' && this.processDefinitionId) {
+          // 查看流程图
+          this.getWorkflow(1)
+        } else if (val === 'edit' && this.flowKey) {
+          // 编辑流程图
+          this.getWorkflow(2)
+        }
+      }
     }
   },
   mounted() {
-    // 查看流程图
-    if (this.processDefinitionId && this.handleType === 'show') {
-      this.getWorkflow(1)
-    }
-    // 编辑流程图
-    if (this.flowKey && this.handleType === 'edit') {
-      this.getWorkflow(2)
-    }
   }
 }
