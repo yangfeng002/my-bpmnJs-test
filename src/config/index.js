@@ -50,7 +50,17 @@ const APIS = {
   queryRoleListByTenantCode: _g(API, '/prt-opcomponent/tenantDepartmentApi/queryRoleListByTenantCode'),
 
   // 导出
-  exportByKey: _g(API, '/prt-opcomponent/modeler/exportByKey')
+  exportByKey: _g(API, '/prt-opcomponent/modeler/exportByKey'),
+
+  // 获取文档列表
+  queryDocumentList: _g(API, '/prt-opcomponent/document/queryDocumentList'),
+  // 根据id查询元数据
+  queryFileMetadataById: _g(API, '/prt-opcomponent/document/queryFileMetadataById'),
+  // 根据id克隆一份文档
+  fileCloneById: _g(API, '/prt-opcomponent/document/fileCloneById'),
+  // 创建文档
+  createDocFile: _g(API, '/prt-opcomponent/document/createDocFile')
+
 }
 
 const getEnv = () => ENV
